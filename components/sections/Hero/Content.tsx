@@ -204,7 +204,7 @@ export default function HeroContent({
   }
 
   return (
-    <section ref={sectionRef} className="relative h-screen flex items-center overflow-hidden bg-gray-900">
+    <section ref={sectionRef} className="relative min-h-[100dvh] flex items-center overflow-hidden bg-gray-900">
       {/* Video Background with Gradient Mask */}
       <div className="absolute inset-0 overflow-hidden">
         <video
@@ -243,9 +243,9 @@ export default function HeroContent({
       <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent-500/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
 
       {/* Content */}
-      <div ref={contentRef} className="container relative z-10 mx-auto px-4 pt-32 md:pt-36 pb-16 md:pb-24">
+      <div ref={contentRef} className="container relative z-10 mx-auto px-4 pt-20 md:pt-36 pb-8 md:pb-24">
         <div className={cn(
-          'flex flex-col gap-6 max-w-3xl',
+          'flex flex-col gap-3 md:gap-6 max-w-3xl',
           alignmentClasses[alignment],
           alignment === 'center' && 'mx-auto',
           alignment === 'right' && 'ml-auto',
@@ -275,7 +275,7 @@ export default function HeroContent({
           </div>
 
           {/* Headline with animated text reveal */}
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl leading-[1.1]">
+          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-7xl leading-[1.1]">
             <AnimatedText text={heading} delay={0.3} />
           </h1>
           
@@ -283,7 +283,7 @@ export default function HeroContent({
           {subheading && (
             <p 
               ref={subheadingRef}
-              className="text-lg text-gray-300 sm:text-xl lg:text-2xl leading-relaxed max-w-2xl opacity-0"
+              className="text-base text-gray-300 sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl opacity-0"
             >
               {subheading}
             </p>
@@ -311,7 +311,7 @@ export default function HeroContent({
           <div 
             ref={ctaRef}
             className={cn(
-              'flex flex-col sm:flex-row flex-wrap gap-4 mt-8',
+              'flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mt-4 md:mt-8',
               alignment === 'center' && 'justify-center',
               alignment === 'right' && 'justify-end',
             )}
@@ -322,7 +322,7 @@ export default function HeroContent({
               variant="accent"
               size="lg"
               pill
-              className="text-lg px-10 py-6 shadow-xl shadow-accent-500/30 hover:shadow-2xl hover:shadow-accent-500/40 hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              className="text-base md:text-lg px-6 md:px-10 py-4 md:py-6 shadow-xl shadow-accent-500/30 hover:shadow-2xl hover:shadow-accent-500/40 hover:scale-105 transition-all duration-300 group relative overflow-hidden"
             >
               <span className="relative z-10">{primaryCta?.text || 'Pyydä ilmainen tarjous'}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-accent-600 to-accent-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -334,8 +334,8 @@ export default function HeroContent({
               variant="outline"
               size="lg"
               pill
-              icon={<Phone className="h-8 w-8" />}
-              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              icon={<Phone className="h-5 w-5 md:h-6 md:w-6" />}
+              className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
             >
               {secondaryCta?.text || 'Soita suoraan'}
             </Button>
@@ -346,15 +346,15 @@ export default function HeroContent({
               variant="whatsapp"
               size="md"
               pill
-              icon={<img src="/icon/whatsapp.svg" alt="" className="h-8 w-8" />}
-              className="sm:ml-auto hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/20"
+              icon={<img src="/icon/whatsapp.svg" alt="" className="h-5 w-5 md:h-6 md:w-6" />}
+              className="sm:ml-auto hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/20 text-sm md:text-base"
             >
               WhatsApp
             </Button>
           </div>
 
           {/* Micro-conversion hint */}
-          <p ref={microRef} className="text-sm text-gray-400 mt-2 opacity-0 flex items-center gap-2">
+          <p ref={microRef} className="text-xs md:text-sm text-gray-400 mt-1 md:mt-2 opacity-0 flex items-center gap-2">
             <span className="inline-flex w-5 h-5 rounded-full bg-primary-500/20 items-center justify-center">
               <span className="text-primary-400 text-xs">✓</span>
             </span>

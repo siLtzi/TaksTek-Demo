@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+/* Mobile viewport fix - use dvh for dynamic viewport height */
+@supports (height: 100dvh) {
+  :root {
+    --vh: 1dvh;
+  }
+}
+
+/* Safe area insets for notched devices */
+html {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Hide scrollbar for carousel elements */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 :root {
   /* Primary Colors - Green (Brand Accent) */
   --primary-50: #f0fdf4;
