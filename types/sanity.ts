@@ -106,6 +106,8 @@ export type Section =
   | CTASection
   | ContactSection
   | FAQSection
+  | ValuePropositionSection
+  | TrustElementsSection
 
 export interface HeroSection {
   _type: 'heroSection'
@@ -222,4 +224,26 @@ export interface LinkObject {
   }
   externalUrl?: string
   openInNewTab?: boolean
+}
+
+export interface ValuePropositionSection {
+  _type: 'valuePropositionSection'
+  _key: string
+  heading?: string
+  subheading?: string
+  propositions?: {
+    title: string
+    description?: string
+    icon?: string
+  }[]
+  backgroundColor?: 'white' | 'gray' | 'primary'
+}
+
+export interface TrustElementsSection {
+  _type: 'trustElementsSection'
+  _key: string
+  heading?: string
+  showBrands?: boolean
+  showReviews?: boolean
+  showServiceAreas?: boolean
 }
