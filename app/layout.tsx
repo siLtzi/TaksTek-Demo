@@ -20,15 +20,15 @@ export async function generateMetadata(): Promise<Metadata> {
   
   return {
     title: {
-      default: settings?.siteName || 'Your Website',
-      template: `%s | ${settings?.siteName || 'Your Website'}`,
+      default: settings?.siteName || 'TaksTek - LVI ja Ilmalämpöpumput Oulussa',
+      template: `%s | ${settings?.siteName || 'TaksTek'}`,
     },
-    description: settings?.siteDescription || '',
+    description: settings?.siteDescription || 'Ilmalämpöpumppujen asennukset, LVI-palvelut ja huollot Oulussa ja lähialueilla. Nopea ja luotettava palvelu yli 10 vuoden kokemuksella.',
     metadataBase: new URL(siteUrl),
     openGraph: {
       type: 'website',
-      siteName: settings?.siteName || 'Your Website',
-      locale: 'en_US',
+      siteName: settings?.siteName || 'TaksTek',
+      locale: 'fi_FI',
     },
     twitter: {
       card: 'summary_large_image',
@@ -36,6 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: {
       index: true,
       follow: true,
+    },
+    alternates: {
+      canonical: siteUrl,
     },
   }
 }
@@ -48,7 +51,36 @@ export default async function RootLayout({
   const settings = await getSiteSettings()
   
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="fi" className={inter.variable}>
+      <head>
+        {/* Local Business Schema for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HVACBusiness",
+              "name": settings?.siteName || "TaksTek Oy",
+              "description": settings?.siteDescription || "Ilmalämpöpumppujen asennukset ja LVI-palvelut Oulussa",
+              "url": process.env.NEXT_PUBLIC_SITE_URL,
+              "telephone": settings?.contactInfo?.phone,
+              "email": settings?.contactInfo?.email,
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Oulu",
+                "addressRegion": "Pohjois-Pohjanmaa",
+                "addressCountry": "FI"
+              },
+              "areaServed": [
+                "Oulu", "Kempele", "Haukipudas", "Kiiminki", 
+                "Oulunsalo", "Liminka", "Muhos", "Tyrnävä", "Ii"
+              ],
+              "priceRange": "€€",
+              "openingHours": "Mo-Fr 08:00-17:00"
+            })
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col bg-white font-sans antialiased">
         <Header />
         <main className="flex-1">

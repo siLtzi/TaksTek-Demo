@@ -11,6 +11,8 @@ const Features = dynamic(() => import('./Features'))
 const CTA = dynamic(() => import('./CTA'))
 const Contact = dynamic(() => import('./Contact'))
 const FAQ = dynamic(() => import('./FAQ'))
+const ValueProposition = dynamic(() => import('./ValueProposition'))
+const TrustElements = dynamic(() => import('./TrustElements'))
 
 // ============================================================================
 // TYPES
@@ -44,6 +46,10 @@ export function SectionRenderer({ sections, contactInfo }: SectionRendererProps)
             return <Contact key={section._key} section={section} contactInfo={contactInfo} />
           case 'faqSection':
             return <FAQ key={section._key} section={section} />
+          case 'valuePropositionSection':
+            return <ValueProposition key={section._key} section={section} />
+          case 'trustElementsSection':
+            return <TrustElements key={section._key} section={section} />
           default:
             console.warn(`Unknown section type: ${(section as Section)._type}`)
             return null

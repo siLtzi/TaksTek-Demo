@@ -26,7 +26,7 @@ function useLocalStorageConsent() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
 
-export function CookieNotice({ enabled = true, text, linkText = 'Learn more' }: CookieNoticeProps) {
+export function CookieNotice({ enabled = true, text, linkText = 'Lue lisää' }: CookieNoticeProps) {
   const [dismissed, setDismissed] = useState(false)
   const consent = useLocalStorageConsent()
   
@@ -44,10 +44,10 @@ export function CookieNotice({ enabled = true, text, linkText = 'Learn more' }: 
   if (!enabled || consent === 'unknown' || consent || dismissed) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white p-4 shadow-lg">
+    <div className="fixed bottom-16 lg:bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white p-4 shadow-lg">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-gray-600">
-          {text || 'We use cookies to improve your experience on our website.'}{' '}
+          {text || 'Käytämme evästeitä parantaaksemme käyttökokemustasi.'}{' '}
           <Link href="/privacy-policy" className="text-primary-600 underline hover:text-primary-700">
             {linkText}
           </Link>
@@ -55,15 +55,15 @@ export function CookieNotice({ enabled = true, text, linkText = 'Learn more' }: 
         <div className="flex gap-2">
           <button
             onClick={handleDecline}
-            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
           >
-            Decline
+            Hylkää
           </button>
           <button
             onClick={handleAccept}
-            className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700"
+            className="rounded-full bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700"
           >
-            Accept
+            Hyväksy
           </button>
         </div>
       </div>
